@@ -3,7 +3,8 @@ module Main where
 import Test.Tasty
 import Test.Tasty.HUnit
 
-import Golf
+import Golf2
+-- import Lecture
 
 skipsSuite :: TestTree
 skipsSuite = testGroup "0three rec poly TEST"
@@ -12,6 +13,7 @@ skipsSuite = testGroup "0three rec poly TEST"
                   ,testCase "test 2" $ skips "hello!" @?=["hello!","el!","l!","l","o","!"]
                   ,testCase "test 3" $ skips [1] @?=[[1]]
                   ,testCase "test 4" $ skips [True,False] @?= [[True,False], [False]]
+                  -- ,testCase "test 5" $ skips [] @?= []
                   ]
 
             , testGroup "Test of --localMaxima-- function"
