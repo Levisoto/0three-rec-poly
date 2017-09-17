@@ -175,3 +175,5 @@ headNEL (NEL x _) = x
 
 tailNEL :: NonEmptyList a -> [a]
 tailNEL (NEL _ xs) = xs
+
+-- this is a test to "How git pull use"
