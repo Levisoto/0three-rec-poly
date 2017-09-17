@@ -144,3 +144,34 @@ findNum f E = E
 findNum f (C x xs)
   | f x = C x (findNum f xs)
   | otherwise = findNum f xs
+
+-- this part is to learn "Maybe from library Prelude"
+
+-- Partial functions are which have some value for which this function will crash
+-- The opossit of this are tottal functions
+-- For example
+---- /show
+emptyStringList :: [String]
+emptyStringList = []
+-- show
+safeHead :: [a] -> Maybe a
+safeHead []    = Nothing
+safeHead (x:_) = Just x
+
+main = print (safeHead emptyStringList, safeHead ["hello"])
+
+data NonEmptyList a = NEL a [a]
+                    deriving Show
+
+nelToList :: NonEmptyList a -> [a]
+nelToList (NEL x xs) = x:xs
+
+listToNEL :: [a] -> Maybe (NonEmptyList a)
+listToNEL []     = Nothing
+listToNEL (x:xs) = Just (NEL x xs)
+
+headNEL :: NonEmptyList a -> a
+headNEL (NEL x _) = x
+
+tailNEL :: NonEmptyList a -> [a]
+tailNEL (NEL _ xs) = xs
